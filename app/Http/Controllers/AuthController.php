@@ -44,10 +44,7 @@ class AuthController extends Controller
                 $newUser->password = $hash;
                 $newUser->save();
 
-                $token = auth()->attempt([
-                    'cpf' => $cpf,
-                    'password' => $password
-                ]);
+                $token = Auth::attempt($cpf, $password);
 
                 if(!$token) {
                     $array['error'] = 'Ocorreu um erro';
